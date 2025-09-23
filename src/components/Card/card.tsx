@@ -7,17 +7,20 @@ interface CardPropsTypes {
     task: DataPropType;
     handleMovePrev: (task: DataPropType) => void;
     handleMoveNext: (task: DataPropType) => void;
+    handleDeleteTask: (id: number) => void;
 }
 export const Card = ({
     task,
     handleMovePrev,
     handleMoveNext,
+    handleDeleteTask,
 }: CardPropsTypes): React.ReactElement => {
     return (
         <div className="card-container">
-            {task.status !== TODO && <button className='button' onClick={() => handleMovePrev(task)}>{'<'}</button>}
+            <button className="delete-button" onClick={() => handleDeleteTask(task.id)}>X</button>
+            {task.status !== TODO && <button className='move-button' onClick={() => handleMovePrev(task)}>{'<'}</button>}
             <p>{task.text}</p>
-            {task.status !== DONE && <button className='button' onClick={() => handleMoveNext(task)}>{'>'}</button>}
+            {task.status !== DONE && <button className='move-button' onClick={() => handleMoveNext(task)}>{'>'}</button>}
         </div>
     )
 }

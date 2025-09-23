@@ -38,6 +38,18 @@ function App() {
     }
   };
 
+  const handleDeleteTask = (taskId: number) => {
+    setTasks((prev) => {
+      return prev.filter((task) => task.id !== taskId)
+    })
+  };
+
+  const taskHandlers = {
+    handleMoveNext,
+    handleMovePrev,
+    handleDeleteTask,
+  };
+
   useEffect(() => {
     const data = fetchData();
     setTasks(data);
@@ -52,8 +64,7 @@ function App() {
               key={status}
               tasks={tasks}
               status={status}
-              handleMoveNext={handleMoveNext}
-              handleMovePrev={handleMovePrev}
+              {...taskHandlers}
             />
           )
         })}
