@@ -1,0 +1,20 @@
+.kanban-columns {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(39, 171, 215);
+}
+
+.column-wrapper {
+    text-align: center;
+}
+
+.column {
+    height: 100vh;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgb(215, 189, 39);
+    padding: 1rem;
+}
