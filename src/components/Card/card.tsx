@@ -1,23 +1,23 @@
 import './card.css';
-import { TODO, DONE } from '../../constants/index';
 import { DataPropType } from '../../data/test';
-
+import { statusCodes } from '../../api/index';
+import { NEXT, PREV } from '../../constants/index';
 
 interface CardPropsTypes {
     task: DataPropType;
-    handleMovePrev: (task: DataPropType) => void;
-    handleMoveNext: (task: DataPropType) => void;
+    handleMoveTask: (task: DataPropType, direction: string) => void;
 }
+
+
 export const Card = ({
     task,
-    handleMovePrev,
-    handleMoveNext,
+    handleMoveTask,
 }: CardPropsTypes): React.ReactElement => {
     return (
         <div className="card-container">
-            {task.status !== TODO && <button className='button' onClick={() => handleMovePrev(task)}>{'<'}</button>}
+            {task.statusCode !== 0 && <button className='button' onClick={() => handleMoveTask(task, PREV)}>{'<'}</button>}
             <p>{task.text}</p>
-            {task.status !== DONE && <button className='button' onClick={() => handleMoveNext(task)}>{'>'}</button>}
+            {task.statusCode !== Object.keys(statusCodes).length - 1 && <button className='button' onClick={() => handleMoveTask(task, NEXT)}>{'>'}</button>}
         </div>
     )
 }

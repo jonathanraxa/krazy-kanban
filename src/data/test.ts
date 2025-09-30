@@ -26,4 +26,4 @@ export const data = [
   }
 ];
 
-export interface DataPropType { id: number; text: string; status: string; }
+export interface DataPropType { id: number; text: string; status: string; statusCode: number; }

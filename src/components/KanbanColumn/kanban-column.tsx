@@ -6,17 +6,16 @@ import './kanban-column.css';
 interface KanbanColumnProps {
     status: string;
     tasks: DataPropType[];
-    handleMoveNext: (tasks: DataPropType) => void;
-    handleMovePrev: (tasks: DataPropType) => void;
+    handleMoveTask: (tasks: DataPropType, direction: string) => void;
 }
 
-export const KanbanColumn = ({ status, tasks, handleMoveNext, handleMovePrev }: KanbanColumnProps) => {
+export const KanbanColumn = ({ status, tasks, handleMoveTask }: KanbanColumnProps) => {
     return (
         <div className='column-wrapper'>
             <h2>{status.toUpperCase()}</h2>
             <div className='column'>
                 {tasks.map((task) => {
-                    return task.status === status && <Card key={task.id} task={task} handleMoveNext={handleMoveNext} handleMovePrev={handleMovePrev} />
+                    return task.status === status && <Card key={task.id} task={task} handleMoveTask={handleMoveTask} />
                 })}
             </div>
         </div>
